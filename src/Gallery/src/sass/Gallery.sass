@@ -1,0 +1,22 @@
+@import './_mixins'
+@import './_slide'
+
+%grid
+    display: grid
+    width: 100%
+    height: 100%
+
+.grid
+    @extend %grid
+    
+.gallery-container
+    width: 100%
+    height: 100%
+    position: relative
+    overflow: hidden
+    perspective: 800px
+    perspective-origin: center center
+    // grid-auto-columns: auto
+    // grid-template-rows: 1fr
+    // grid-auto-flow: column
+    // +column-gap(var(--column-gap))

@@ -1,0 +1,9 @@
+@import './_mixins'
+    
+$gallerySlideTransform: rotateY(calc(var(--slide-offset) * var(--coverflow-rotation))) scale(calc(1 - (var(--slide-offset-abs) * var(--coverflow-scaleFactor))))
+
+// .gallery-slide
+//     +transform(rotateY(calc(var(--slide-offset) * var(--coverflow-rotation))) scale(calc(1 - (var(--slide-offset-abs) * var(--coverflow-scaleFactor)))))
+
+// .gallery-slide-active
+//     +transform(rotateY(calc(var(--slide-offset) * var(--coverflow-rotation))))

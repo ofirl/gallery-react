@@ -1,5 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
+
+import Gallery from './Gallery';
+
 import './App.css';
 
 function App() {
@@ -18,6 +21,13 @@ function App() {
         >
           Learn React
         </a>
+        <div style={{height: '200px', width: '100%'}}>
+          <Gallery>
+            <div className="test-slide" style={{ backgroundColor: 'red' }}> red </div>
+            <div className="test-slide" style={{ backgroundColor: 'green' }}> green </div>
+            <div className="test-slide" style={{ backgroundColor: 'pink' }}> pink </div>
+          </Gallery>
+        </div>
       </header>
     </div>
   );
