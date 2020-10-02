@@ -32,7 +32,11 @@ const Gallery = ({ children, initialSlide = 1, styleConfig: styleConfigOverride,
         ...styleConfigOverride
     }), [styleConfigOverride, effect]);
 
-    const dragBind = useDrag(({ movement: [movementX, _], initial, first, last, swipe, tap, ...others }) => {
+    const dragBind = useDrag(({ event, movement: [movementX, _], initial, first, last, swipe, tap, ...others }) => {
+        if (!tap) {
+            event.stopPropagation();
+        }
+
         if (first)
             setIsDragged(true);
 

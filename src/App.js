@@ -23,7 +23,7 @@ function App() {
         </a>
         <div style={{height: '200px', width: '100%'}}>
           <Gallery>
-            <div className="test-slide" style={{ backgroundColor: 'red' }}> red </div>
+            <div className="test-slide" style={{ backgroundColor: 'red' }} onClick={(e) => {e.stopPropagation(); console.log('red');}}> red </div>
             <div className="test-slide" style={{ backgroundColor: 'green' }}> green </div>
             <div className="test-slide" style={{ backgroundColor: 'pink' }}> pink </div>
           </Gallery>
