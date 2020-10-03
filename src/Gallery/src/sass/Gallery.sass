@@ -1,14 +1,12 @@
 @import './_mixins'
-@import './_slide'
 
-%grid
-    display: grid
-    width: 100%
-    height: 100%
+// effects
+@import './_coverflow'
+@import './_utils'
 
-.grid
-    @extend %grid
-    
+.grab-cursor
+    cursor: grab
+
 .gallery-container
     width: 100%
     height: 100%
@@ -16,7 +14,7 @@
     overflow: hidden
     perspective: 800px
     perspective-origin: center center
-    // grid-auto-columns: auto
-    // grid-template-rows: 1fr
-    // grid-auto-flow: column
-    // +column-gap(var(--column-gap))
+
+.gallery-mouse-blocker
+    @extend  %fill-parent
+    @extend %above-all

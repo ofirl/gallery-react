@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 
 import Gallery from './Gallery';
 
 import './App.css';
 
+
 function App() {
+  let [slide, setSlide] = useState(0);
+
+  const slideChange = (newSlide) => {
+    setSlide(newSlide);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -21,11 +28,13 @@ function App() {
         >
           Learn React
         </a>
-        <div style={{height: '200px', width: '100%'}}>
-          <Gallery>
-            <div className="test-slide" style={{ backgroundColor: 'red' }} onClick={(e) => {e.stopPropagation(); console.log('red');}}> red </div>
-            <div className="test-slide" style={{ backgroundColor: 'green' }}> green </div>
-            <div className="test-slide" style={{ backgroundColor: 'pink' }}> pink </div>
+        <div style={{height: '100px', width: '500px'}}>
+          <Gallery activeSlide={slide} onSlideChange={slideChange}>
+            {
+              ['red', 'green', 'pink'].map((color) => 
+              <div key={color} className="test-slide" style={{ backgroundColor: color }} onClick={(e) => {e.stopPropagation(); console.log(color);}}> {color} </div>
+              )
+            }
           </Gallery>
         </div>
       </header>

@@ -1,9 +1,26 @@
-@import './_mixins'
-    
-$gallerySlideTransform: rotateY(calc(var(--slide-offset) * var(--coverflow-rotation))) scale(calc(1 - (var(--slide-offset-abs) * var(--coverflow-scaleFactor))))
+@import './_slide'
 
-// .gallery-slide
-//     +transform(rotateY(calc(var(--slide-offset) * var(--coverflow-rotation))) scale(calc(1 - (var(--slide-offset-abs) * var(--coverflow-scaleFactor)))))
+$gallerySlideTransform: rotateY(calc(var(--slide-offset) * var(--coverflow-rotation) * 1deg)) scale(calc(1 - (var(--slide-offset-abs) * var(--coverflow-scaleFactor))))
 
-// .gallery-slide-active
-//     +transform(rotateY(calc(var(--slide-offset) * var(--coverflow-rotation))))
+=gallery-slide-shadow($orientation)
+    // from: black, opacity = -x^2 * 0.000029 + x * 0.01 (0 => 0, 172 => 0.86)
+    // to: transparent
+    background: linear-gradient($orientation,
+    rgba(0, 0, 0, calc(var(--slide-offset-abs) * var(--coverflow-rotation) * var(--slide-offset-abs) * var(--coverflow-rotation) * -0.000029 + var(--slide-offset-abs) * var(--coverflow-rotation) * 0.01)), 
+    calc(1% + var(--slide-offset-abs) * 50%), #00000000)
+
+.gallery-coverflow 
+    .gallery-slide
+        @extend %base-gallery-slide
+        transform-origin: 50% 50%
+        top: 0px
+        +transform(translateX(calc(((var(--slide-offset)) * (100px + var(--slide-gap))) + var(--base-slide-offset))) translateX(-50%) $gallerySlideTransform)
+
+    .gallery-slide-shadow
+        @extend %fill-parent
+
+    .gallery-slide-shadow-right
+        +gallery-slide-shadow(90deg)
+
+    .gallery-slide-shadow-left
+        +gallery-slide-shadow(270deg)

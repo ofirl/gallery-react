@@ -1,11 +1,10 @@
 @import './_mixins'
-@import './_coverflow'
-    
-.gallery-slide
+@import './_utils'
+
+%base-gallery-slide
     position: absolute
-    top: 0px
-    transform-origin: 50% 50%
-    +transform(translateX(calc(((var(--slide-offset)) * (100px + var(--column-gap))) + var(--base-slide-offset))) translateX(-50%) $gallerySlideTransform)
-    // left: calc((var(--slide-offset) * (100px + var(--column-gap))) + var(--base-slide-offset))
+
+.gallery-slide
+    @extend %base-gallery-slide
 
 .gallery-slide-active
