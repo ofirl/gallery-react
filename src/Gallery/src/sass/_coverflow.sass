@@ -14,7 +14,10 @@ $gallerySlideTransform: rotateY(calc(var(--slide-offset) * var(--coverflow-rotat
         @extend %base-gallery-slide
         transform-origin: 50% 50%
         top: 0px
-        +transform(translateX(calc(((var(--slide-offset)) * (100px + var(--slide-gap))) + var(--base-slide-offset))) translateX(-50%) $gallerySlideTransform)
+        //  ((1 - (var(--slide-offset-abs) * var(--coverflow-rotation) / 180)) * var(--slide-width) * 1px)
+        // this is  the offset for only one, now i need to sum the series for all the slide offsets in jumps of 1 until we reach 0
+        // top: calc(var(--slide-offset) * var(--coverflow-rotation) / 90 * var(--slide-width) * 1px)
+        +transform(translateX(calc(((var(--slide-offset)) * (var(--slide-width) * 1px + var(--slide-gap))) + var(--base-slide-offset) + (var(--slide-offset) * var(--coverflow-rotation) / 90 * var(--slide-width) * 1px) )) translateX(-50%) $gallerySlideTransform)
 
     .gallery-slide-shadow
         @extend %fill-parent

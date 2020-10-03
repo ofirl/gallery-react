@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 
 import Gallery from './Gallery';
+// import Gallery from 'gallery-coverflow-react';
 
 import './App.css';
-
 
 function App() {
   let [slide, setSlide] = useState(0);
@@ -31,7 +31,7 @@ function App() {
         <div style={{height: '100px', width: '500px'}}>
           <Gallery activeSlide={slide} onSlideChange={slideChange}>
             {
-              ['red', 'green', 'pink'].map((color) => 
+              ['red', 'green', 'pink', 'blue', 'yellow'].map((color) => 
               <div key={color} className="test-slide" style={{ backgroundColor: color }} onClick={(e) => {e.stopPropagation(); console.log(color);}}> {color} </div>
               )
             }
